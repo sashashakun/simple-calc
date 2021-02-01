@@ -14,21 +14,22 @@ class _CalculatorState extends State<Calculator> {
 
   @override
   Widget build(BuildContext context) {
-    return Scaffold(
-      appBar: AppBar(
-        title: Text('Calculator'),
+    return CupertinoPageScaffold(
+      navigationBar: CupertinoNavigationBar(
+        // backgroundColor: Colors.blueGrey,
+        middle: Text('Calculator'),
       ),
-      body: _buildApp(),
+      child: _buildApp(),
     );
   }
 
   Widget _buildApp() {
     return Center(
-        child: Column(
+      child: Column(
       mainAxisAlignment: MainAxisAlignment.spaceEvenly,
       children: [
         Row(
-          mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+          mainAxisAlignment: MainAxisAlignment.spaceAround,
           children: [
             Text(
               _getTextToRender(),

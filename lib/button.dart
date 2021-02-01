@@ -12,7 +12,7 @@ class Button extends StatelessWidget {
         child: Text(
           sym,
           style: TextStyle(
-            fontSize: 34,
+            fontSize: 32,
             color: Colors.black87,
           ),
         ));
