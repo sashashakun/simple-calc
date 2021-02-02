@@ -13,7 +13,8 @@ void main() {
     await tester.tap(find.widgetWithText(Button, '2'));
     await tester.tap(find.widgetWithText(Button, '='));
     await tester.pump();
-    String result = (find.byKey(Key('result-key')).evaluate().single.widget as Text).data;
+    String result =
+        (find.byKey(Key('result-key')).evaluate().single.widget as Text).data;
     expect(result, '3');
   });
   testWidgets('2 - 1 = 1', (WidgetTester tester) async {
@@ -24,7 +25,8 @@ void main() {
     await tester.tap(find.widgetWithText(Button, '1'));
     await tester.tap(find.widgetWithText(Button, '='));
     await tester.pump();
-    String result = (find.byKey(Key('result-key')).evaluate().single.widget as Text).data;
+    String result =
+        (find.byKey(Key('result-key')).evaluate().single.widget as Text).data;
     expect(result, '1');
   });
 
@@ -36,7 +38,8 @@ void main() {
     await tester.tap(find.widgetWithText(Button, '2'));
     await tester.tap(find.widgetWithText(Button, '='));
     await tester.pump();
-    String result = (find.byKey(Key('result-key')).evaluate().single.widget as Text).data;
+    String result =
+        (find.byKey(Key('result-key')).evaluate().single.widget as Text).data;
     expect(result, '3');
   });
 
@@ -48,7 +51,8 @@ void main() {
     await tester.tap(find.widgetWithText(Button, '3'));
     await tester.tap(find.widgetWithText(Button, '='));
     await tester.pump();
-    String result = (find.byKey(Key('result-key')).evaluate().single.widget as Text).data;
+    String result =
+        (find.byKey(Key('result-key')).evaluate().single.widget as Text).data;
     expect(result, '6');
   });
 
@@ -61,7 +65,8 @@ void main() {
     await tester.tap(find.widgetWithText(Button, '2'));
     await tester.tap(find.widgetWithText(Button, '='));
     await tester.pump();
-    String result = (find.byKey(Key('result-key')).evaluate().single.widget as Text).data;
+    String result =
+        (find.byKey(Key('result-key')).evaluate().single.widget as Text).data;
     expect(result, '13');
   });
 
@@ -74,7 +79,8 @@ void main() {
     await tester.tap(find.widgetWithText(Button, '1'));
     await tester.tap(find.widgetWithText(Button, '='));
     await tester.pump();
-    String result = (find.byKey(Key('result-key')).evaluate().single.widget as Text).data;
+    String result =
+        (find.byKey(Key('result-key')).evaluate().single.widget as Text).data;
     expect(result, '24');
   });
 
@@ -86,7 +92,8 @@ void main() {
     await tester.tap(find.widgetWithText(Button, '2'));
     await tester.tap(find.widgetWithText(Button, '='));
     await tester.pump();
-    String result = (find.byKey(Key('result-key')).evaluate().single.widget as Text).data;
+    String result =
+        (find.byKey(Key('result-key')).evaluate().single.widget as Text).data;
     expect(result, '1.5');
   });
 
@@ -99,7 +106,8 @@ void main() {
     await tester.tap(find.widgetWithText(Button, '3'));
     await tester.tap(find.widgetWithText(Button, '='));
     await tester.pump();
-    String result = (find.byKey(Key('result-key')).evaluate().single.widget as Text).data;
+    String result =
+        (find.byKey(Key('result-key')).evaluate().single.widget as Text).data;
     expect(result, '1');
   });
 }

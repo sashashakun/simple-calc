@@ -9,11 +9,20 @@ class Button extends StatelessWidget {
   Widget build(BuildContext context) {
     return FlatButton(
         onPressed: onPressed,
-        child: Text(
-          sym,
-          style: TextStyle(
-            fontSize: 32,
-            color: Colors.black87,
+        child: Container(
+          padding: EdgeInsets.fromLTRB(27, 17, 10, 10),
+          width: 75,
+          height: 75,
+          decoration: BoxDecoration(
+            borderRadius: BorderRadius.circular(37),
+            color: Colors.grey,
+          ),
+          child: Text(
+            sym,
+            style: TextStyle(
+              fontSize: 32,
+              color: Colors.white,
+            ),
           ),
         ));
   }

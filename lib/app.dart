@@ -8,15 +8,16 @@ class Calculator extends StatefulWidget {
 }
 
 class _CalculatorState extends State<Calculator> {
-  num firstNum;
+  num firstNum = 0;
   num secondNum;
   String operation = '';
 
   @override
   Widget build(BuildContext context) {
     return CupertinoPageScaffold(
+      backgroundColor: Colors.black87,
       navigationBar: CupertinoNavigationBar(
-        // backgroundColor: Colors.blueGrey,
+        backgroundColor: Colors.black87,
         middle: Text('Calculator'),
       ),
       child: _buildApp(),
@@ -25,21 +26,25 @@ class _CalculatorState extends State<Calculator> {
 
   Widget _buildApp() {
     return Center(
-      child: Column(
-      mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+        child: Column(
+      mainAxisAlignment: MainAxisAlignment.spaceEvenly, 
       children: [
-        Row(
-          mainAxisAlignment: MainAxisAlignment.spaceAround,
-          children: [
-            Text(
-              _getTextToRender(),
-              style: TextStyle(
-                fontSize: 34,
-                color: Colors.black87,
-              ),
-              key: Key('result-key'),
-            )
-          ],
+        Container(
+          padding: EdgeInsets.fromLTRB(20, 0, 20, 0),
+          child: Row(
+            children: [
+              Container(
+                  padding: EdgeInsets.fromLTRB(0, 110, 0, 10),
+                  child: Text(
+                    _getTextToRender(),
+                    style: TextStyle(
+                      fontSize: 45,
+                      color: Colors.white,
+                    ),
+                    key: Key('result-key'),
+                  ))
+            ],
+          ),
         ),
         Row(
           mainAxisAlignment: MainAxisAlignment.spaceEvenly,
@@ -50,7 +55,6 @@ class _CalculatorState extends State<Calculator> {
           ],
         ),
         Row(
-          mainAxisAlignment: MainAxisAlignment.spaceEvenly,
           children: [
             Button(onPressed: () => _setNum(1), sym: '1'),
             Button(onPressed: () => _setNum(2), sym: '2'),
@@ -59,7 +63,6 @@ class _CalculatorState extends State<Calculator> {
           ],
         ),
         Row(
-          mainAxisAlignment: MainAxisAlignment.spaceEvenly,
           children: [
             Button(onPressed: () => _setNum(4), sym: '4'),
             Button(onPressed: () => _setNum(5), sym: '5'),
@@ -68,7 +71,6 @@ class _CalculatorState extends State<Calculator> {
           ],
         ),
         Row(
-          mainAxisAlignment: MainAxisAlignment.spaceEvenly,
           children: [
             Button(onPressed: () => _setNum(7), sym: '7'),
             Button(onPressed: () => _setNum(8), sym: '8'),
@@ -77,7 +79,7 @@ class _CalculatorState extends State<Calculator> {
           ],
         ),
         Row(
-          mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+          mainAxisAlignment: MainAxisAlignment.end,
           children: [
             Button(onPressed: () => _setNum(0), sym: '0'),
             Button(onPressed: () => _clearState(), sym: 'C'),
@@ -94,7 +96,7 @@ class _CalculatorState extends State<Calculator> {
     if (noNums) return '';
 
     num result = noSecondNum ? firstNum : secondNum;
-    
+
     return _isInteger(result) ? result.toInt().toString() : result.toString();
   }
 
@@ -150,8 +152,10 @@ class _CalculatorState extends State<Calculator> {
   }
 
   void _setNum(num value) {
-    bool isLongFirstNum = firstNum != null && secondNum == null && operation == '';
-    bool isLongSecondNum = firstNum != null && secondNum != null && operation != '';
+    bool isLongFirstNum =
+        firstNum != null && secondNum == null && operation == '';
+    bool isLongSecondNum =
+        firstNum != null && secondNum != null && operation != '';
     bool noSecondNum = firstNum != null && secondNum == null && operation != '';
     bool noFirstNum = firstNum == null;
 
@@ -206,4 +210,3 @@ class _CalculatorState extends State<Calculator> {
 
   bool _isInteger(num a) => (a % 1) == 0;
 }
-
