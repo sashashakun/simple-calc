@@ -1,17 +1,17 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_test/flutter_test.dart';
 
-import 'package:my_app/main.dart';
-import 'package:my_app/button.dart';
+import 'package:simple_calc/main.dart';
+import 'package:simple_calc/button.dart';
 
 void main() {
   testWidgets('1 + 2 = 3', (WidgetTester tester) async {
     await tester.pumpWidget(MyApp());
 
     await tester.tap(find.widgetWithText(Button, '1'));
-    await tester.tap(find.widgetWithText(Button, '+'));
+    await tester.tap(find.widgetWithText(SecondaryButton, '+'));
     await tester.tap(find.widgetWithText(Button, '2'));
-    await tester.tap(find.widgetWithText(Button, '='));
+    await tester.tap(find.widgetWithText(LongButton, '='));
     await tester.pump();
     String result =
         (find.byKey(Key('result-key')).evaluate().single.widget as Text).data;
@@ -21,9 +21,9 @@ void main() {
     await tester.pumpWidget(MyApp());
 
     await tester.tap(find.widgetWithText(Button, '2'));
-    await tester.tap(find.widgetWithText(Button, '-'));
+    await tester.tap(find.widgetWithText(SecondaryButton, '-'));
     await tester.tap(find.widgetWithText(Button, '1'));
-    await tester.tap(find.widgetWithText(Button, '='));
+    await tester.tap(find.widgetWithText(LongButton, '='));
     await tester.pump();
     String result =
         (find.byKey(Key('result-key')).evaluate().single.widget as Text).data;
@@ -34,9 +34,9 @@ void main() {
     await tester.pumpWidget(MyApp());
 
     await tester.tap(find.widgetWithText(Button, '6'));
-    await tester.tap(find.widgetWithText(Button, '/'));
+    await tester.tap(find.widgetWithText(SecondaryButton, '÷'));
     await tester.tap(find.widgetWithText(Button, '2'));
-    await tester.tap(find.widgetWithText(Button, '='));
+    await tester.tap(find.widgetWithText(LongButton, '='));
     await tester.pump();
     String result =
         (find.byKey(Key('result-key')).evaluate().single.widget as Text).data;
@@ -47,9 +47,9 @@ void main() {
     await tester.pumpWidget(MyApp());
 
     await tester.tap(find.widgetWithText(Button, '2'));
-    await tester.tap(find.widgetWithText(Button, '*'));
+    await tester.tap(find.widgetWithText(SecondaryButton, '×'));
     await tester.tap(find.widgetWithText(Button, '3'));
-    await tester.tap(find.widgetWithText(Button, '='));
+    await tester.tap(find.widgetWithText(LongButton, '='));
     await tester.pump();
     String result =
         (find.byKey(Key('result-key')).evaluate().single.widget as Text).data;
@@ -61,9 +61,9 @@ void main() {
 
     await tester.tap(find.widgetWithText(Button, '1'));
     await tester.tap(find.widgetWithText(Button, '1'));
-    await tester.tap(find.widgetWithText(Button, '+'));
+    await tester.tap(find.widgetWithText(SecondaryButton, '+'));
     await tester.tap(find.widgetWithText(Button, '2'));
-    await tester.tap(find.widgetWithText(Button, '='));
+    await tester.tap(find.widgetWithText(LongButton, '='));
     await tester.pump();
     String result =
         (find.byKey(Key('result-key')).evaluate().single.widget as Text).data;
@@ -74,10 +74,10 @@ void main() {
     await tester.pumpWidget(MyApp());
 
     await tester.tap(find.widgetWithText(Button, '3'));
-    await tester.tap(find.widgetWithText(Button, '+'));
+    await tester.tap(find.widgetWithText(SecondaryButton, '+'));
     await tester.tap(find.widgetWithText(Button, '2'));
     await tester.tap(find.widgetWithText(Button, '1'));
-    await tester.tap(find.widgetWithText(Button, '='));
+    await tester.tap(find.widgetWithText(LongButton, '='));
     await tester.pump();
     String result =
         (find.byKey(Key('result-key')).evaluate().single.widget as Text).data;
@@ -88,9 +88,9 @@ void main() {
     await tester.pumpWidget(MyApp());
 
     await tester.tap(find.widgetWithText(Button, '3'));
-    await tester.tap(find.widgetWithText(Button, '/'));
+    await tester.tap(find.widgetWithText(SecondaryButton, '÷'));
     await tester.tap(find.widgetWithText(Button, '2'));
-    await tester.tap(find.widgetWithText(Button, '='));
+    await tester.tap(find.widgetWithText(LongButton, '='));
     await tester.pump();
     String result =
         (find.byKey(Key('result-key')).evaluate().single.widget as Text).data;
@@ -101,10 +101,10 @@ void main() {
     await tester.pumpWidget(MyApp());
 
     await tester.tap(find.widgetWithText(Button, '2'));
-    await tester.tap(find.widgetWithText(Button, '+/-'));
-    await tester.tap(find.widgetWithText(Button, '+'));
+    await tester.tap(find.widgetWithText(Button, '±'));
+    await tester.tap(find.widgetWithText(SecondaryButton, '+'));
     await tester.tap(find.widgetWithText(Button, '3'));
-    await tester.tap(find.widgetWithText(Button, '='));
+    await tester.tap(find.widgetWithText(LongButton, '='));
     await tester.pump();
     String result =
         (find.byKey(Key('result-key')).evaluate().single.widget as Text).data;
