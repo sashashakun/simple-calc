@@ -1,5 +1,4 @@
 import 'package:flutter/material.dart';
-import 'package:flutter/cupertino.dart';
 import 'button.dart';
 
 class Calculator extends StatefulWidget {
@@ -14,13 +13,9 @@ class _CalculatorState extends State<Calculator> {
 
   @override
   Widget build(BuildContext context) {
-    return CupertinoPageScaffold(
+    return Scaffold(
       backgroundColor: Color(0xff555a60),
-      // navigationBar: CupertinoNavigationBar(
-      //   backgroundColor: Color(0xff555a60),
-      //   middle: Text('Calculator'),
-      // ),
-      child: _buildApp(),
+      body: _buildApp(),
     );
   }
 
@@ -48,12 +43,11 @@ class _CalculatorState extends State<Calculator> {
           ),
         ),
         Row(
-          mainAxisAlignment: MainAxisAlignment.spaceEvenly,
           children: [
+            ResetButton(onPressed: () => _clearState(), sym: 'AC'),
             Button(onPressed: () => _revertSign(), sym: '±'),
-            Button(onPressed: null, sym: 'H'),
-            Button(onPressed: () => _clearState(), sym: 'AC'),
-            SecondaryButton(onPressed: () => _setOperation('/'), sym: '÷'),
+            Button(onPressed: () => _makePercent(), sym: '%'),
+            OperationButton(onPressed: () => _setOperation('/'), sym: '÷'),
           ],
         ),
         Row(
@@ -61,7 +55,7 @@ class _CalculatorState extends State<Calculator> {
             Button(onPressed: () => _setNum(7), sym: '7'),
             Button(onPressed: () => _setNum(8), sym: '8'),
             Button(onPressed: () => _setNum(9), sym: '9'),
-            SecondaryButton(onPressed: () => _setOperation('+'), sym: '+'),
+            OperationButton(onPressed: () => _setOperation('+'), sym: '+'),
           ],
         ),
         Row(
@@ -69,7 +63,7 @@ class _CalculatorState extends State<Calculator> {
             Button(onPressed: () => _setNum(4), sym: '4'),
             Button(onPressed: () => _setNum(5), sym: '5'),
             Button(onPressed: () => _setNum(6), sym: '6'),
-            SecondaryButton(onPressed: () => _setOperation('-'), sym: '-'),
+            OperationButton(onPressed: () => _setOperation('-'), sym: '-'),
           ],
         ),
         Row(
@@ -77,7 +71,7 @@ class _CalculatorState extends State<Calculator> {
             Button(onPressed: () => _setNum(1), sym: '1'),
             Button(onPressed: () => _setNum(2), sym: '2'),
             Button(onPressed: () => _setNum(3), sym: '3'),
-            SecondaryButton(onPressed: () => _setOperation('*'), sym: '×'),
+            OperationButton(onPressed: () => _setOperation('*'), sym: '×'),
           ],
         ),
         Row(
@@ -100,6 +94,21 @@ class _CalculatorState extends State<Calculator> {
     num result = noSecondNum ? firstNum : secondNum;
 
     return _isInteger(result) ? result.toInt().toString() : result.toString();
+  }
+
+  void _makePercent() {
+     if (firstNum != null) {
+      setState(() {
+        firstNum = firstNum / 100;
+      });
+      return;
+    }
+
+    if (secondNum != null) {
+      setState(() {
+        secondNum = secondNum / 100;
+      });
+    }
   }
 
   void _revertSign() {
@@ -160,6 +169,11 @@ class _CalculatorState extends State<Calculator> {
         firstNum != null && secondNum != null && operation != '';
     bool noSecondNum = firstNum != null && secondNum == null && operation != '';
     bool noFirstNum = firstNum == null;
+
+    const MAX_NUMS_ON_SCREEN = 6;
+    if (firstNum.toString().length == MAX_NUMS_ON_SCREEN) {
+      return;
+    }
 
     if (noFirstNum) {
       setState(() {

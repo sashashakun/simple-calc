@@ -9,14 +9,13 @@ class Button extends StatelessWidget {
   Widget build(BuildContext context) {
     return FlatButton(
         onPressed: onPressed,
+        shape: CircleBorder(
+          side: BorderSide(width: 0, color: Color(0xff555a60)),
+        ),
         child: Container(
           padding: EdgeInsets.fromLTRB(27, 17, 10, 10),
           width: 75,
           height: 75,
-          decoration: BoxDecoration(
-            borderRadius: BorderRadius.circular(37),
-            color: Color(0xff555a60),
-          ),
           child: Text(
             sym,
             style: TextStyle(
@@ -28,10 +27,37 @@ class Button extends StatelessWidget {
   }
 }
 
-class SecondaryButton extends StatelessWidget {
+class ResetButton extends StatelessWidget {
   final onPressed;
   final sym;
-  SecondaryButton({Key key, this.onPressed, this.sym}) : super(key: key);
+  ResetButton({Key key, this.onPressed, this.sym}) : super(key: key);
+
+  @override
+  Widget build(BuildContext context) {
+    return FlatButton(
+        onPressed: onPressed,
+        shape: CircleBorder(
+          side: BorderSide(width: 0, color: Color(0xff555a60)),
+        ),
+        child: Container(
+          padding: EdgeInsets.fromLTRB(18, 21, 15, 10),
+          width: 75,
+          height: 75,
+          child: Text(
+            sym,
+            style: TextStyle(
+              fontSize: 27,
+              color: Color(0xfff4ab41),
+            ),
+          ),
+        ));
+  }
+}
+
+class OperationButton extends StatelessWidget {
+  final onPressed;
+  final sym;
+  OperationButton({Key key, this.onPressed, this.sym}) : super(key: key);
 
   @override
   Widget build(BuildContext context) {
