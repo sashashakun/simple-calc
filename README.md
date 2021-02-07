@@ -2,7 +2,7 @@
 
 Pretty simple calculator app build with Flutter to try it out
 
-<img src="https://user-images.githubusercontent.com/5776864/106391931-c6062080-6400-11eb-8317-6c4f9b9ab3c0.png" width=200>
+<img src="https://user-images.githubusercontent.com/5776864/107154257-ff9bd600-6982-11eb-9dfe-fd323d2b5e01.png" width=200>
 
 1. Add icon
 2. Change home screen name
