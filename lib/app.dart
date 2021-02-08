@@ -20,69 +20,71 @@ class _CalculatorState extends State<Calculator> {
   }
 
   Widget _buildApp() {
-    return Center(
-        child: Column(
-      mainAxisAlignment: MainAxisAlignment.spaceEvenly,
-      children: [
-        Container(
-          padding: EdgeInsets.fromLTRB(20, 0, 20, 0),
-          child: Row(
-            mainAxisAlignment: MainAxisAlignment.end,
-            children: [
-              Container(
-                  padding: EdgeInsets.fromLTRB(0, 100, 0, 10),
-                  child: Text(
-                    _getTextToRender(),
-                    style: TextStyle(
-                      fontSize: 75,
-                      color: Color(0xfff4ab41),
-                    ),
-                    key: Key('result-key'),
-                  ))
-            ],
-          ),
-        ),
-        Row(
+    return Container(
+        constraints: BoxConstraints(maxWidth: 440),
+        child: Center(
+            child: Column(
+          mainAxisAlignment: MainAxisAlignment.spaceEvenly,
           children: [
-            ResetButton(onPressed: () => _clearState(), sym: 'AC'),
-            Button(onPressed: () => _revertSign(), sym: '±'),
-            Button(onPressed: () => _makePercent(), sym: '%'),
-            OperationButton(onPressed: () => _setOperation('/'), sym: '÷'),
+            Container(
+              padding: EdgeInsets.fromLTRB(20, 0, 20, 0),
+              child: Row(
+                mainAxisAlignment: MainAxisAlignment.end,
+                children: [
+                  Container(
+                      padding: EdgeInsets.fromLTRB(0, 100, 0, 10),
+                      child: Text(
+                        _getTextToRender(),
+                        style: TextStyle(
+                          fontSize: 75,
+                          color: Color(0xfff4ab41),
+                        ),
+                        key: Key('result-key'),
+                      ))
+                ],
+              ),
+            ),
+            Row(
+              children: [
+                ResetButton(onPressed: () => _clearState(), sym: 'AC'),
+                Button(onPressed: () => _revertSign(), sym: '±'),
+                Button(onPressed: () => _makePercent(), sym: '%'),
+                OperationButton(onPressed: () => _setOperation('/'), sym: '÷'),
+              ],
+            ),
+            Row(
+              children: [
+                Button(onPressed: () => _setNum(7), sym: '7'),
+                Button(onPressed: () => _setNum(8), sym: '8'),
+                Button(onPressed: () => _setNum(9), sym: '9'),
+                OperationButton(onPressed: () => _setOperation('+'), sym: '+'),
+              ],
+            ),
+            Row(
+              children: [
+                Button(onPressed: () => _setNum(4), sym: '4'),
+                Button(onPressed: () => _setNum(5), sym: '5'),
+                Button(onPressed: () => _setNum(6), sym: '6'),
+                OperationButton(onPressed: () => _setOperation('-'), sym: '-'),
+              ],
+            ),
+            Row(
+              children: [
+                Button(onPressed: () => _setNum(1), sym: '1'),
+                Button(onPressed: () => _setNum(2), sym: '2'),
+                Button(onPressed: () => _setNum(3), sym: '3'),
+                OperationButton(onPressed: () => _setOperation('*'), sym: '×'),
+              ],
+            ),
+            Row(
+              mainAxisAlignment: MainAxisAlignment.end,
+              children: [
+                Button(onPressed: () => _setNum(0), sym: '0'),
+                LongButton(onPressed: () => _calcEqual(), sym: '='),
+              ],
+            ),
           ],
-        ),
-        Row(
-          children: [
-            Button(onPressed: () => _setNum(7), sym: '7'),
-            Button(onPressed: () => _setNum(8), sym: '8'),
-            Button(onPressed: () => _setNum(9), sym: '9'),
-            OperationButton(onPressed: () => _setOperation('+'), sym: '+'),
-          ],
-        ),
-        Row(
-          children: [
-            Button(onPressed: () => _setNum(4), sym: '4'),
-            Button(onPressed: () => _setNum(5), sym: '5'),
-            Button(onPressed: () => _setNum(6), sym: '6'),
-            OperationButton(onPressed: () => _setOperation('-'), sym: '-'),
-          ],
-        ),
-        Row(
-          children: [
-            Button(onPressed: () => _setNum(1), sym: '1'),
-            Button(onPressed: () => _setNum(2), sym: '2'),
-            Button(onPressed: () => _setNum(3), sym: '3'),
-            OperationButton(onPressed: () => _setOperation('*'), sym: '×'),
-          ],
-        ),
-        Row(
-          mainAxisAlignment: MainAxisAlignment.end,
-          children: [
-            Button(onPressed: () => _setNum(0), sym: '0'),
-            LongButton(onPressed: () => _calcEqual(), sym: '='),
-          ],
-        ),
-      ],
-    ));
+        )));
   }
 
   String _getTextToRender() {
@@ -97,7 +99,7 @@ class _CalculatorState extends State<Calculator> {
   }
 
   void _makePercent() {
-     if (firstNum != null) {
+    if (firstNum != null) {
       setState(() {
         firstNum = firstNum / 100;
       });

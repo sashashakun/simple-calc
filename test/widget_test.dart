@@ -22,7 +22,7 @@ void main() {
     await clickOperation(t, '-');
     await clickNumButton(t, 1);
     await clickEquals(t);
-  
+
     expect(getCalcResult(), '1');
   });
 
@@ -115,4 +115,4 @@ clickOperation(WidgetTester t, String operation) async {
 
 String getCalcResult() {
   return (find.byKey(Key('result-key')).evaluate().single.widget as Text).data;
-} 
+}
