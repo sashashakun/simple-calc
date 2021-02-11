@@ -19,3 +19,9 @@ jobs:
       - run: flutter pub get
       - run: flutter test
       - run: flutter build web
+
+  - name: Deploy 🚀
+      uses: JamesIves/github-pages-deploy-action@4.0.0
+      with:
+        branch: gh-pages
+        folder: build
