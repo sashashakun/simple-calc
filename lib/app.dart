@@ -21,13 +21,12 @@ class _CalculatorState extends State<Calculator> {
 
   Widget _buildApp() {
     return Container(
-        constraints: BoxConstraints(maxWidth: 440),
         child: Center(
             child: Column(
           mainAxisAlignment: MainAxisAlignment.spaceEvenly,
           children: [
             Container(
-              padding: EdgeInsets.fromLTRB(20, 0, 20, 0),
+              // padding: EdgeInsets.fromLTRB(20, 0, 20, 0),
               child: Row(
                 mainAxisAlignment: MainAxisAlignment.end,
                 children: [
