@@ -31,8 +31,7 @@
 .pub/
 
 /build/**
-!/build/web/Procfile
-!/build/web/requirements.txt
+!/build/web/**
 
 # Web related
 lib/generated_plugin_registrant.dart
