@@ -2,7 +2,7 @@
 
 ![CI](https://github.com/sashashakun/simple-calc/workflows/CI/badge.svg?branch=master)
 
-Deployed to heroku simple-calc-web.herokuapp.com
+Deployed to [heroku](https://simple-calc-web.herokuapp.com)
 
 Pretty simple calculator app build with Flutter to try it out
 
