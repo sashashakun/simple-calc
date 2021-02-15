@@ -1,1 +1,1 @@
-web: python -m SimpleHTTPServer 8000
+web: python -m http.server 8000
