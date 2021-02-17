@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'button.dart';
+import 'package:flutter/foundation.dart' show kIsWeb;
 
 class Calculator extends StatefulWidget {
   @override
@@ -26,9 +27,8 @@ class _CalculatorState extends State<Calculator> {
           mainAxisAlignment: MainAxisAlignment.spaceEvenly,
           children: [
             Container(
-              // padding: EdgeInsets.fromLTRB(20, 0, 20, 0),
               child: Row(
-                mainAxisAlignment: MainAxisAlignment.end,
+                mainAxisAlignment: _getEndAlignment(),
                 children: [
                   Container(
                       padding: EdgeInsets.fromLTRB(0, 100, 0, 10),
@@ -44,6 +44,7 @@ class _CalculatorState extends State<Calculator> {
               ),
             ),
             Row(
+              mainAxisAlignment: _getMainAxisAlignment(),
               children: [
                 ResetButton(onPressed: () => _clearState(), sym: 'AC'),
                 Button(onPressed: () => _revertSign(), sym: '±'),
@@ -52,6 +53,7 @@ class _CalculatorState extends State<Calculator> {
               ],
             ),
             Row(
+              mainAxisAlignment: _getMainAxisAlignment(),
               children: [
                 Button(onPressed: () => _setNum(7), sym: '7'),
                 Button(onPressed: () => _setNum(8), sym: '8'),
@@ -60,6 +62,7 @@ class _CalculatorState extends State<Calculator> {
               ],
             ),
             Row(
+              mainAxisAlignment: _getMainAxisAlignment(),
               children: [
                 Button(onPressed: () => _setNum(4), sym: '4'),
                 Button(onPressed: () => _setNum(5), sym: '5'),
@@ -68,6 +71,7 @@ class _CalculatorState extends State<Calculator> {
               ],
             ),
             Row(
+              mainAxisAlignment: _getMainAxisAlignment(),
               children: [
                 Button(onPressed: () => _setNum(1), sym: '1'),
                 Button(onPressed: () => _setNum(2), sym: '2'),
@@ -76,7 +80,7 @@ class _CalculatorState extends State<Calculator> {
               ],
             ),
             Row(
-              mainAxisAlignment: MainAxisAlignment.end,
+              mainAxisAlignment: _getEndAlignment(),
               children: [
                 Button(onPressed: () => _setNum(0), sym: '0'),
                 LongButton(onPressed: () => _calcEqual(), sym: '='),
@@ -85,6 +89,10 @@ class _CalculatorState extends State<Calculator> {
           ],
         )));
   }
+
+  MainAxisAlignment _getMainAxisAlignment() => kIsWeb ? MainAxisAlignment.spaceEvenly : MainAxisAlignment.start;
+
+  MainAxisAlignment _getEndAlignment() => kIsWeb ? MainAxisAlignment.center : MainAxisAlignment.end;
 
   String _getTextToRender() {
     bool noNums = firstNum == null && secondNum == null;
@@ -157,7 +165,7 @@ class _CalculatorState extends State<Calculator> {
 
   void _clearState() {
     setState(() {
-      firstNum = null;
+      firstNum = 0;
       operation = '';
       secondNum = null;
     });

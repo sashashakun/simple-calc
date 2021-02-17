@@ -93,6 +93,19 @@ void main() {
 
     expect(getCalcResult(), '1');
   });
+
+  testWidgets('AC', (WidgetTester t) async {
+    await pump(t);
+
+    await clickNumButton(t, 2);
+    await t.tap(find.widgetWithText(Button, '±'));
+    await clickOperation(t, '+');
+    await clickNumButton(t, 3);
+    await clickEquals(t);
+    await clickReset(t);
+
+    expect(getCalcResult(), '0');
+  });
 }
 
 pump(WidgetTester t) async {
@@ -105,6 +118,11 @@ clickNumButton(WidgetTester t, int numText) async {
 
 clickEquals(WidgetTester t) async {
   await t.tap(find.widgetWithText(LongButton, '='));
+  await t.pump();
+}
+
+clickReset(WidgetTester t) async {
+  await t.tap(find.widgetWithText(ResetButton, 'AC'));
   await t.pump();
 }
 
